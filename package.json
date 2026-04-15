@@ -1,0 +1,16 @@
+{
+  "name": "minimalist-notion-markdown-sync",
+  "version": "1.0.0",
+  "description": "Sync Notion database pages to a Git repository as Markdown files",
+  "main": "sync.js",
+  "type": "module",
+  "scripts": {
+    "sync": "node sync.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "slugify": "^1.6.6"
+  }
+}
