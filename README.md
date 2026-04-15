@@ -26,7 +26,7 @@ Tick `fetch to local` on any Notion page to include it in the sync. Unticking re
 ## Database Template
 
 A ready-to-use Notion database template is available here:
-**[minimalist-notion-markdown-sync template](https://documentsaving.notion.site/minimalist-notion-markdown-sync-template-34360263736280ababd2f8e818c4a584)**
+**[minimalist-notion-markdown-sync template](https://documentsaving.notion.site/34360263736280c0a381e67d73f59b00?v=343602637362809298ae000c3af1425c)**
 
 Duplicate it to your workspace, then share it with your integration before running the sync.
 
