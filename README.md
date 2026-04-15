@@ -1,6 +1,10 @@
 # minimalist-notion-markdown-sync
 
-Selectively sync pages from a Notion database to your local repository as Markdown files. Tick `fetch to local` on any Notion page to include it — unticking cleans up the local files automatically. Images are downloaded locally, only changed content is re-synced, and everything is committed and pushed in one step.
+> Notion → Markdown, ready for Claude Code.
+
+I plan every project in Notion. When I start coding, I want Claude Code to read those plans — but Claude Code reads files, not Notion pages. So I built this tool to sync the pages I care about to local Markdown files automatically, and keep them up to date as the plan evolves.
+
+Tick `fetch to local` on any Notion page to include it in the sync. Unticking removes the local files. One command does the rest.
 
 ## Features
 
