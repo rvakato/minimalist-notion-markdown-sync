@@ -34,8 +34,8 @@ Before running setup, have these ready:
 
 ```bash
 # 1. Clone the repository
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/rvakato/minimalist-notion-markdown-sync
+cd minimalist-notion-markdown-sync
 
 # 2. Install dependencies
 npm install
