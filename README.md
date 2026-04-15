@@ -30,6 +30,19 @@ A ready-to-use Notion database template is available here:
 
 Duplicate it to your workspace, then share it with your integration before running the sync.
 
+## Database Properties
+
+The template includes four properties. Not all of them are read by the sync tool — here's what you can and cannot change:
+
+| Property | Type | Required | Notes |
+|---|---|---|---|
+| **Title** | Title | Yes | Built-in Notion property. The page title becomes the output filename (`posts/<title>.md`). You can rename the column label, but the title property itself cannot be removed. |
+| **fetch to local** | Checkbox | **Yes — do not rename** | The sync tool looks for this property by name. Renaming or removing it will cause pages to be ignored. Tick to include a page; untick to delete its local files. |
+| **Date** | Date | No | Not read by the sync tool. Keep it, remove it, or rename it — it has no effect on the output. |
+| **Category** | Select / Multi-select | No | Not read by the sync tool. Keep it, remove it, or rename it — it has no effect on the output. |
+
+**In short:** only `fetch to local` must stay exactly as named. Everything else is yours to customise.
+
 ## Getting Started
 
 Before running setup, have these ready:
