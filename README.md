@@ -29,8 +29,8 @@ Duplicate it to your workspace, then share it with your integration before runni
 
 ```bash
 # 1. Clone the repository
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/rvakato/minimalist-notion-markdown-sync
+cd minimalist-notion-markdown-sync
 
 # 2. Install dependencies
 npm install
