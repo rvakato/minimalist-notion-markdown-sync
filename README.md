@@ -29,8 +29,8 @@ Duplicate it to your workspace, then share it with your integration before runni
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/rvakato/minimalist-notion-markdown-sync
-cd minimalist-notion-markdown-sync
+git clone <your-repo-url>
+cd <repo-folder>
 
 # 2. Install dependencies
 npm install
@@ -46,22 +46,32 @@ npm run sync
 
 ### NOTION_API_KEY
 
-1. Go to [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations)
-2. Click **New integration**, give it a name, and select the workspace
-3. Copy the **Internal Integration Token** — this is your `NOTION_API_KEY`
+This is the secret token that lets the tool talk to your Notion workspace.
+
+1. Go to [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations) and sign in
+2. Click **New integration**
+3. Give it a name (e.g. `markdown-sync`), select your workspace, and leave the type as **Internal**
+4. Click **Save** — Notion will show you the integration page
+5. Under **Secrets**, click **Show** next to the Internal Integration Token, then **Copy** — this is your `NOTION_API_KEY`
+
+> Keep this token private. Anyone with it can read (and modify) any database you share with the integration.
 
 ### NOTION_DATABASE_ID
 
-1. Open your Notion database in a browser
-2. Look at the URL — it looks like:
-   ```
-   https://www.notion.so/your-workspace/<database-id>?v=...
-   ```
-3. Copy the 32-character hex string before the `?` — this is your `NOTION_DATABASE_ID`
+This identifies which database to sync. If you duplicated the template, open it in your workspace — otherwise open any Notion database you want to sync.
 
-> The database must be **shared with your integration**: open the database → click **Share** (top right) → search for your integration name → click **Invite**.
+1. Open the database in your browser (it must be a full-page database, not an inline one)
+2. The URL looks like:
+   ```
+   https://www.notion.so/your-workspace/My-Database-34360263736280ababd2f8e818c4a584?v=...
+   ```
+3. Copy the 32-character hex string at the end of the path, before the `?` — in the example above that's `34360263736280ababd2f8e818c4a584`. This is your `NOTION_DATABASE_ID`
+
+> **Important:** the database must be shared with your integration before it will appear in API results. Open the database → click **Share** (top right) → search for your integration name → click **Invite**. If you skip this step the sync will return zero pages.
 
 ### .env file
+
+Create a `.env` file in the project root (it is gitignored, so it will never be committed):
 
 ```env
 NOTION_API_KEY=ntn_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
