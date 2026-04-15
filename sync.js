@@ -68,9 +68,11 @@ async function main() {
   // 5. Persist updated state
   saveState(state);
 
-  // 6. Git commit and push
-  console.log('\nCommitting changes to Git...');
-  await commitAndPush();
+  // 6. Git commit and push (if enabled)
+  if (process.env.USE_GIT === 'true') {
+    console.log('\nCommitting changes to Git...');
+    await commitAndPush();
+  }
 
   console.log('\nSync complete.');
 }

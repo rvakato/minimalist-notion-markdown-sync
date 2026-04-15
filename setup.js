@@ -40,13 +40,17 @@ async function main() {
     process.exit(1);
   }
 
+  const gitAnswer = await ask('Use Git version control? Commits and pushes after each sync. (y/N): ');
+  const useGit = gitAnswer.trim().toLowerCase() === 'y';
+
   fs.writeFileSync(
     ENV_FILE,
-    `NOTION_API_KEY=${apiKey.trim()}\nNOTION_DATABASE_ID=${dbId.trim()}\n`,
+    `NOTION_API_KEY=${apiKey.trim()}\nNOTION_DATABASE_ID=${dbId.trim()}\nUSE_GIT=${useGit}\n`,
     'utf8'
   );
 
   console.log('\n.env created successfully.');
+  console.log(`Git version control: ${useGit ? 'enabled' : 'disabled'}`);
   console.log('\nMake sure your database is shared with your Notion integration,');
   console.log('then run: npm run sync\n');
 

@@ -13,8 +13,9 @@ Tick `fetch to local` on any Notion page to include it in the sync. Unticking re
 - **Local image storage** — downloads all Notion-hosted images to an `images/` directory so links never expire
 - **Dirty checking** — compares `last_edited_time` against a local state file and skips unchanged pages
 - **Auto-delete** — removes local `.md` files and images when pages are deleted from Notion or unticked
-- **One-command sync** — `npm run sync` fetches, converts, writes, commits, and pushes in one go
-- **GitHub Actions schedule** — runs automatically at 11 AM and 11 PM GMT with a manual trigger option
+- **One-command sync** — `npm run sync` fetches, converts, and writes files in one go
+- **Optional Git versioning** — choose during setup whether to commit and push after each sync, or keep it local only
+- **GitHub Actions schedule** — runs automatically at 11 AM and 11 PM GMT with a manual trigger option (requires Git enabled)
 
 ## Prerequisites
 
@@ -25,7 +26,7 @@ Tick `fetch to local` on any Notion page to include it in the sync. Unticking re
 ## Database Template
 
 A ready-to-use Notion database template is available here:
-**[minimalist-notion-markdown-sync template](https://documentsaving.notion.site/34360263736280c0a381e67d73f59b00?v=343602637362809298ae000c3af1425c)**
+**[minimalist-notion-markdown-sync template](https://documentsaving.notion.site/minimalist-notion-markdown-sync-template-34360263736280ababd2f8e818c4a584)**
 
 Duplicate it to your workspace, then share it with your integration before running the sync.
 
@@ -67,14 +68,18 @@ This is the secret token that lets the tool talk to your Notion workspace.
 
 ### NOTION_DATABASE_ID
 
-This identifies which database to sync. If you duplicated the template, open it in your workspace — otherwise open any Notion database you want to sync.
+This identifies which database to sync. The most reliable way to get it:
 
-1. Open the database in your browser (it must be a full-page database, not an inline one)
-2. The URL looks like:
+1. Open your Notion database
+2. Click the **···** menu (top-right corner of the database)
+3. Click **Copy link to view**
+4. Paste the URL somewhere — it looks like:
    ```
    https://www.notion.so/your-workspace/My-Database-34360263736280ababd2f8e818c4a584?v=...
    ```
-3. Copy the 32-character hex string at the end of the path, before the `?` — in the example above that's `34360263736280ababd2f8e818c4a584`. This is your `NOTION_DATABASE_ID`
+5. The database ID is the 32-character hex string between the last `-` and the `?`. In the example above that's `34360263736280ababd2f8e818c4a584`
+
+> The browser address bar URL can be misleading — it sometimes shows the parent page ID instead of the database ID. Always use **Copy link to view** from the `···` menu to be sure.
 
 > **Important:** the database must be shared with your integration before it will appear in API results. Open the database → click **Share** (top right) → search for your integration name → click **Invite**. If you skip this step the sync will return zero pages.
 
@@ -85,6 +90,7 @@ Create a `.env` file in the project root (it is gitignored, so it will never be 
 ```env
 NOTION_API_KEY=ntn_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 NOTION_DATABASE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+USE_GIT=false
 ```
 
 ## Automated Sync via GitHub Actions
@@ -147,7 +153,7 @@ Write posts/<page-title>.md
 Update sync-state.json
     │
     ▼
-git add -A → git commit → git push
+(if USE_GIT=true) git add -A → git commit → git push
 ```
 
 ## Project Structure
@@ -178,3 +184,4 @@ git add -A → git commit → git push
 |---|---|
 | `NOTION_API_KEY` | Internal integration token from [notion.so/my-integrations](https://www.notion.so/my-integrations) |
 | `NOTION_DATABASE_ID` | ID of the Notion database to sync (32-char hex from the page URL) |
+| `USE_GIT` | `true` to commit and push after each sync; `false` for local-only (default: `false`) |
