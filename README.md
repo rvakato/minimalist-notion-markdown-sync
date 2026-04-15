@@ -27,16 +27,21 @@ Duplicate it to your workspace, then share it with your integration before runni
 
 ## Getting Started
 
+Before running setup, have these ready:
+- **Notion API key** — get it from [notion.so/my-integrations](https://www.notion.so/my-integrations) (see [Getting Your Notion Credentials](#getting-your-notion-credentials) below)
+- **Notion database ID** — the 32-char hex from your database URL
+- The database must already be **shared with your integration**
+
 ```bash
 # 1. Clone the repository
-git clone https://github.com/rvakato/minimalist-notion-markdown-sync
-cd minimalist-notion-markdown-sync
+git clone <your-repo-url>
+cd <repo-folder>
 
 # 2. Install dependencies
 npm install
 
-# 3. Configure credentials (see section below)
-cp .env.example .env   # or edit .env directly
+# 3. Run the setup wizard — prompts for your Notion credentials and writes .env
+npm run setup
 
 # 4. Run the sync
 npm run sync

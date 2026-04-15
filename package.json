@@ -5,6 +5,7 @@
   "main": "sync.js",
   "type": "module",
   "scripts": {
+    "setup": "node setup.js",
     "sync": "node sync.js"
   },
   "dependencies": {
