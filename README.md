@@ -1,6 +1,6 @@
 # minimalist-notion-markdown-sync
 
-<img width="1993" height="815" alt="Untitled" src="https://github.com/user-attachments/assets/6013d50b-bdaa-4ae5-b5e7-498c7c98f1cc" />
+<img width="1993" height="815" alt="Frame 630" src="https://github.com/user-attachments/assets/e3387235-0cec-4f4c-af90-bc0d00690c1c" />
 
 I plan every project in Notion. When I start coding, I want Claude Code to read those plans — but Claude Code reads files, not Notion pages. So I built this tool to sync the pages I care about to local Markdown files automatically, and keep them up to date as the plan evolves.
 
